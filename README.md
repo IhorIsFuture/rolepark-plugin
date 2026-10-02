@@ -19,6 +19,16 @@ Ready-made recruiting workflows for [RolePark](https://rolepark.com), the applic
 
 The plugin uses the same RolePark connector as the RolePark listing in the Connectors directory (https://rolepark.com/api/mcp). If you already connected it, there is nothing more to connect, and you see one set of RolePark tools.
 
+## ChatGPT and Codex
+
+The same plugin is packaged for the ChatGPT and Codex plugin directory: the root `plugin.json` and `mcp.json` describe it there, and the six skills are shared. Once RolePark is published in that directory:
+
+1. In ChatGPT or Codex, open **Plugins**, find **RolePark** and add it.
+2. Connect it, sign in to RolePark and allow access. Keep **Make changes** checked if you want the assistant to add candidates, move stages, schedule interviews and add notes and tasks.
+3. Ask in your own words, for example "Who is at each stage of the Senior QA Engineer vacancy?".
+
+The same rules apply there: your own RolePark access, a confirmation before every change, and every change recorded in your company's audit log. What the assistant reads from RolePark becomes part of your conversation and is processed by OpenAI under your agreement with OpenAI. You can disconnect in RolePark under **Profile → AI agents**.
+
 ## What you can ask
 
 Describe the task in your own words, in Ukrainian, English, Polish or another language. Claude replies in the language you write in. You can also type `/` in the message box and pick a RolePark skill.
@@ -81,6 +91,10 @@ Email [help@rolepark.com](mailto:help@rolepark.com). You can also use the feedba
 1. У Claude відкрийте **Customize → Plugins**, знайдіть **RolePark** у каталозі й додайте.
 2. На вкладці **Connectors** плагіна підключіть **RolePark**. На планах Team і Enterprise конектор спершу додає Owner організації, а потім кожен підключається зі своїм акаунтом RolePark.
 3. Увійдіть у RolePark і натисніть **Дозволити**. Залиште позначку **Зміни**, якщо хочете, щоб Claude додавав кандидатів, переводив етапи, призначав інтерв'ю, додавав нотатки й задачі. Без цього Claude лише переглядає дані.
+
+### ChatGPT і Codex
+
+Той самий плагін зібраний і для каталогу плагінів ChatGPT і Codex: там його описують кореневі `plugin.json` і `mcp.json`, а шість скілів спільні. Коли RolePark зʼявиться в цьому каталозі, відкрийте **Plugins** у ChatGPT чи Codex, додайте **RolePark**, підключіть його й увійдіть у RolePark. Правила ті самі: лише ваші права, підтвердження перед кожною зміною, журнал аудиту. Те, що асистент читає з RolePark, обробляє OpenAI згідно з вашою угодою з OpenAI.
 
 ### Що можна попросити
 

@@ -1,6 +1,18 @@
 # Changelog
 
-All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json`; raise both with every release.
+All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json` (Claude) and in the root `plugin.json` (ChatGPT and Codex); raise both with every release.
+
+## [1.2.0] - 2026-10-02
+
+### Added
+
+- Packaging for the ChatGPT and Codex plugin directory in the same repository: a portable root `plugin.json` (Agent Plugins 1.0.0) with the OpenAI listing, review test cases, release notes and a Ukrainian translation under `extensions.com.openai`, and a root `mcp.json` with the same RolePark server (`https://rolepark.com/api/mcp`, Streamable HTTP). The Claude manifest and `.mcp.json` are unchanged.
+- Listing images in `assets/`: `logo.png`, `logo-dark.png`, `logo-1024.png`, and four 706×800 screenshots in `assets/screenshots/`.
+
+### Changed
+
+- Skills use provider-neutral wording, so they read the same in Claude, ChatGPT and Codex. The "not connected" hint names where to connect in each product.
+- Each skill states that the user's explicit request about format, scope or order comes first, while the access, confirmation, fairness and data rules still apply.
 
 ## [1.1.0] - 2026-10-02
 
