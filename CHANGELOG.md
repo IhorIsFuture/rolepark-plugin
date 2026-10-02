@@ -2,6 +2,13 @@
 
 All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json` (Claude) and in the root `plugin.json` (ChatGPT and Codex); raise both with every release.
 
+## [1.2.1] - 2026-10-03
+
+### Fixed
+
+- Who is emailed when a candidate moves to offer, hired or rejected: the vacancy's recruiter and hiring manager (except whoever made the move and anyone who turned these notifications off), not the candidate. The candidate is emailed only if interviews are cancelled together with the move. `shortlist`, the README (EN and UA) and the ChatGPT review test case no longer say a rejection emails the candidate.
+- Stage order: `schedule_interview` may move the application forward to the interview's stage as the company's stage-order rule allows, under the default rule only when that stage is the next one. `shortlist` and the ChatGPT review test case say so instead of assuming any stage can be reached.
+
 ## [1.2.0] - 2026-10-02
 
 ### Added

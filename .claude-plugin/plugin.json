@@ -1,7 +1,7 @@
 {
   "name": "rolepark",
   "displayName": "RolePark",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Recruiting workflows for the RolePark applicant tracking system: a daily briefing, application review with a shortlist and interview scheduling, interview prep, candidate search in your own database, adding a candidate from a CV, and pipeline updates for hiring managers. Claude works with your own RolePark access and asks before changing anything.",
   "author": {
     "name": "RolePark",

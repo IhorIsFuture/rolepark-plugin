@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "rolepark",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Recruiting workflows for the RolePark applicant tracking system: a daily briefing, application review with a shortlist and interview scheduling, interview prep, candidate search in your own database, adding a candidate from a CV, and pipeline updates for hiring managers. The assistant works with your own RolePark access and asks before changing anything.",
   "author": {
     "name": "RolePark",
@@ -85,7 +85,7 @@
               "description": "Move an application to an interview stage, schedule an interview with an explicit time zone and create a follow-up task, after the user confirms (write; the interview sends invitations).",
               "prompt": "Move Sofia Rossi to the technical interview stage of Senior QA Engineer, schedule a 45-minute technical interview with her next Thursday at 14:00 Kyiv time with me as the interviewer, and create a task for me to send her feedback the day after.",
               "tools_triggered": "whoami, get_vacancy_pipeline, move_application_stage, schedule_interview, create_task",
-              "expected_behavior": "Finds Sofia Rossi's application, then states the stage move, the exact start time with the Kyiv offset, the 45-minute duration, the interview type and the interviewer, warns that RolePark emails the candidate and the interviewer, and asks for confirmation. After a yes, moves the application, schedules the interview and creates the task due the day after it. The interview appears on Sofia Rossi's card and in the reviewer's interviews. If the reviewer is already busy at that time, nothing is scheduled and the assistant lists the conflicts instead of retrying."
+              "expected_behavior": "Finds Sofia Rossi's application, then states the stage move, the exact start time with the Kyiv offset, the 45-minute duration, the interview type and the interviewer, warns that scheduling makes RolePark email the candidate and the interviewer, and asks for confirmation. After a yes, moves the application, schedules the interview and creates the task due the day after it. If the company's stage-order rule (on by default) allows only the next stage and the technical interview is not next for her, RolePark refuses the move and the assistant says so and proposes the next stage instead of skipping stages. The interview appears on Sofia Rossi's card and in the reviewer's interviews. If the reviewer is already busy at that time, nothing is scheduled and the assistant lists the conflicts instead of retrying."
             }
           ],
           "negative": [

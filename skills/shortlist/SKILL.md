@@ -50,13 +50,13 @@ Judge only job-related evidence: skills, experience, results, level, location an
 6. **Present the shortlist** using the template below.
 7. **Propose actions**, numbered, one per candidate:
    - **Advance**: move to the next stage in this vacancy's order, for example New → Screening.
-   - **Not a fit**: move to `rejected` with one reason: `not_qualified`, `insufficient_experience`, `overqualified`, `salary_mismatch`, `location_mismatch`, `culture_fit`, `failed_technical`, `failed_interview`, `no_show`, `withdrew`, `position_closed`, `better_candidate` or `other`. Warn that a rejection may send the company's automatic email to the candidate.
+   - **Not a fit**: move to `rejected` with one reason: `not_qualified`, `insufficient_experience`, `overqualified`, `salary_mismatch`, `location_mismatch`, `culture_fit`, `failed_technical`, `failed_interview`, `no_show`, `withdrew`, `position_closed`, `better_candidate` or `other`. Say that moving to rejected (as to offer or hired) emails the vacancy's recruiter and hiring manager, except whoever makes the move and anyone who turned these notifications off. The candidate gets no email about the move.
    - **Maybe**: no move. Say what to check first.
 
    Then ask the user to reply "yes" to run everything, or to name the numbers to run.
 8. **Run only what was confirmed.** Call `move_application_stage` once per application, using the `applicationId` from the pipeline and a stage key. Report each result. When a move is refused:
-   - `scheduled_interviews`: the candidate still has interviews scheduled. Ask whether to cancel them, and retry with `cancelInterviews: true` only after a yes.
-   - "Move one stage at a time": the company enforces stage order. Propose the next stage instead.
+   - `scheduled_interviews`: the candidate still has interviews scheduled. Ask whether to cancel them, say that the candidate will then get the cancellation email, and retry with `cancelInterviews: true` only after a yes.
+   - "Move one stage at a time": the company's stage-order rule (on by default) allows only the next stage. Propose the next stage instead.
    - The vacancy is closed: only a rejection is possible.
    - 403: the user's role can't move stages here.
 
@@ -64,7 +64,7 @@ Judge only job-related evidence: skills, experience, results, level, location an
 9. **Offer to schedule interviews (optional).** For candidates you just moved into an interview stage, offer to schedule the interview. Don't schedule anything on your own initiative.
    - Ask for, or propose and get confirmed: the date and time **with the time zone** (if the user says "14:00", ask which zone or use the one they already gave; send the time as ISO 8601 with an explicit offset, for example `2026-10-08T14:00:00+03:00`), the duration, the interview type, the interviewers (by default the user themselves) and, if there is one, an `https://` meeting link.
    - Show one confirmation line per interview, for example "Olena Koval · Tech interview · Thu 8 Oct, 14:00–15:00 (Kyiv) · interviewers: you, Andrii Melnyk · invitations go to the candidate and interviewers", and wait for an explicit "yes".
-   - Then call `schedule_interview` once per confirmed interview with the `applicationId`. Warn before you call it that RolePark sends the usual invitation emails to the candidate and the interviewers.
+   - Then call `schedule_interview` once per confirmed interview with the `applicationId`. The application may also move forward to the interview's stage as the company's stage-order rule allows: under the default rule only when that stage is the next one; otherwise its stage does not change. Warn before you call it that RolePark sends the usual invitation emails to the candidate and the interviewers.
    - If the result lists **conflicts** (someone is busy then), nothing was created. Show the conflicts and ask for another time. Never retry with a different time without a new yes.
    - If `schedule_interview` isn't available, the connection is view-only or the user's role can't schedule. Say so and suggest scheduling in RolePark.
 
@@ -87,7 +87,7 @@ Why:
 **Proposed actions (nothing changed yet)**
 1. Olena Koval: New → Screening
 2. Candidate #4F2K: New → Screening
-3. Taras Bondar: Screening → Rejected (reason: not_qualified). This may send the rejection email.
+3. Taras Bondar: Screening → Rejected (reason: not_qualified). The vacancy's recruiter and hiring manager get an email; Taras gets none.
 
 Reply "yes" to run all, or the numbers to run (for example "1, 2").
 ```

@@ -45,7 +45,7 @@ Describe the task in your own words, in Ukrainian, English, Polish or another la
 ## How it keeps you in control
 
 - **Your own access, never more.** Claude sees and does only what you can in RolePark. If your role can't open something, Claude tells you instead of working around it.
-- **Nothing changes without your yes.** Before Claude adds a candidate, puts someone into a vacancy, moves a stage, schedules an interview, adds a note or creates a task, it shows exactly what will change and waits for you to confirm. Rejections can trigger your company's automatic emails, and a scheduled interview sends the usual invitations to the candidate and interviewers; Claude warns you about both. Interview times always include a time zone, and if someone is busy, nothing is scheduled and Claude shows the conflicts.
+- **Nothing changes without your yes.** Before Claude adds a candidate, puts someone into a vacancy, moves a stage, schedules an interview, adds a note or creates a task, it shows exactly what will change and waits for you to confirm. Moving a candidate to offer, hired or rejected emails the vacancy's recruiter and hiring manager (except whoever made the move and anyone who turned these notifications off), not the candidate; the candidate is emailed only if interviews are cancelled together with the move. A scheduled interview sends the usual invitations to the candidate and interviewers. Claude warns you before each of these. Interview times always include a time zone, and if someone is busy, nothing is scheduled and Claude shows the conflicts.
 - **Anonymized candidates stay anonymous.** On blind-review stages, hiring managers and interviewers see "Candidate #XXXX", and Claude never tries to find out who it is.
 - **Facts, with sources.** Every item names the candidate or vacancy it came from, with a link to RolePark. Missing data is reported as missing, not guessed.
 - **Fair screening.** Shortlists and matches use job-related criteria only. They are suggestions, and the decision is yours.
@@ -108,7 +108,7 @@ Email [help@rolepark.com](mailto:help@rolepark.com). You can also use the feedba
 ### Безпека й дані
 
 - Claude бачить і робить лише те, що можете ви в RolePark. Знеособлені кандидати лишаються знеособленими.
-- Жодних змін без вашого «так»: перед кожною дією Claude показує, що саме зміниться. Призначене інтерв'ю надсилає кандидату й інтерв'юерам звичайні запрошення; час завжди з часовим поясом, а якщо хтось зайнятий, нічого не створюється і Claude показує конфлікти.
+- Жодних змін без вашого «так»: перед кожною дією Claude показує, що саме зміниться. Перевід на офер, у найм чи відмову надсилає лист рекрутеру й наймаючому менеджеру вакансії (крім автора дії й тих, хто вимкнув такі сповіщення), а не кандидату; кандидат отримує лист лише про скасування інтерв'ю, якщо їх скасовано разом із переводом. Призначене інтерв'ю надсилає кандидату й інтерв'юерам звичайні запрошення; час завжди з часовим поясом, а якщо хтось зайнятий, нічого не створюється і Claude показує конфлікти.
 - Плагін не запускає власного коду й нічого не зберігає. Дані йдуть лише між Claude і RolePark (https://rolepark.com/api/mcp) з вашим входом. Те, що Claude читає з RolePark, обробляє Anthropic згідно з вашою угодою з Anthropic.
 - Кожна зміна через Claude записується в журнал аудиту компанії. Відключити агента можна будь-коли: **Профіль → AI-агенти** в RolePark або **Customize → Connectors** у Claude.
 - Політика конфіденційності: https://rolepark.com/privacy. Підтримка: [help@rolepark.com](mailto:help@rolepark.com).
