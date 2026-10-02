@@ -2,6 +2,12 @@
 
 All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json`; raise both with every release.
 
+## [1.1.0] - 2026-10-02
+
+### Added
+
+- Interview scheduling with the connector's new `schedule_interview` tool. `shortlist` offers to schedule interviews for candidates it moved into an interview stage, and `interview-prep` can schedule one when none exists yet. Claude confirms the exact time with the time zone, duration, type and interviewers first, warns that RolePark sends the usual invitations to the candidate and interviewers, and shows conflicts instead of retrying when someone is busy.
+
 ## [1.0.0] - 2026-10-02
 
 ### Added

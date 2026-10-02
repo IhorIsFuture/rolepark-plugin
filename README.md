@@ -14,7 +14,7 @@ Ready-made recruiting workflows for [RolePark](https://rolepark.com), the applic
 
 1. In Claude, open **Customize → Plugins**, find **RolePark** in the directory and add it.
 2. Open the plugin's **Connectors** tab and connect **RolePark**. On Team and Enterprise plans, an Owner adds the connector for the organization first, and then each person connects with their own RolePark account.
-3. Sign in to RolePark and select **Allow**. Keep **Make changes** checked if you want Claude to add candidates, move stages and add notes and tasks. Without it, Claude can only look things up.
+3. Sign in to RolePark and select **Allow**. Keep **Make changes** checked if you want Claude to add candidates, move stages, schedule interviews and add notes and tasks. Without it, Claude can only look things up.
 4. In Claude Code, the plugin arrives as a synced plugin. Run `/mcp` and authenticate the `rolepark` server.
 
 The plugin uses the same RolePark connector as the RolePark listing in the Connectors directory (https://rolepark.com/api/mcp). If you already connected it, there is nothing more to connect, and you see one set of RolePark tools.
@@ -26,7 +26,7 @@ Describe the task in your own words, in Ukrainian, English, Polish or another la
 | Skill | What it does | Try asking |
 |---|---|---|
 | `briefing` | Today's interviews, due and overdue tasks, new applications and stuck candidates in your vacancies | "What needs my attention in hiring today?" |
-| `shortlist` | Reviews early-stage applicants against the vacancy's requirements, with reasons and risks; proposes stage moves | "Review the new applications for Senior Java Developer and give me a shortlist." |
+| `shortlist` | Reviews early-stage applicants against the vacancy's requirements, with reasons and risks; proposes stage moves and, after your yes, schedules interviews | "Review the new applications for Senior Java Developer and give me a shortlist." |
 | `interview-prep` | A brief for your next interview: profile, earlier feedback, requirements check, tailored questions | "Prepare me for my 14:00 interview." |
 | `find-candidates` | Skill matching and a boolean CV search (AND, OR, NOT, quotes) in your own database, with an explanation of each match | "Who do we already have for the QA Engineer vacancy? Search CVs for (selenium OR playwright) AND api." |
 | `add-candidate` | Extracts the fields from a pasted CV, checks duplicates, confirms with you, then creates the candidate | "Add this candidate and put her into the Product Designer vacancy: …" |
@@ -35,7 +35,7 @@ Describe the task in your own words, in Ukrainian, English, Polish or another la
 ## How it keeps you in control
 
 - **Your own access, never more.** Claude sees and does only what you can in RolePark. If your role can't open something, Claude tells you instead of working around it.
-- **Nothing changes without your yes.** Before Claude adds a candidate, puts someone into a vacancy, moves a stage, adds a note or creates a task, it shows exactly what will change and waits for you to confirm. Rejections can trigger your company's automatic emails, and Claude warns you about that.
+- **Nothing changes without your yes.** Before Claude adds a candidate, puts someone into a vacancy, moves a stage, schedules an interview, adds a note or creates a task, it shows exactly what will change and waits for you to confirm. Rejections can trigger your company's automatic emails, and a scheduled interview sends the usual invitations to the candidate and interviewers; Claude warns you about both. Interview times always include a time zone, and if someone is busy, nothing is scheduled and Claude shows the conflicts.
 - **Anonymized candidates stay anonymous.** On blind-review stages, hiring managers and interviewers see "Candidate #XXXX", and Claude never tries to find out who it is.
 - **Facts, with sources.** Every item names the candidate or vacancy it came from, with a link to RolePark. Missing data is reported as missing, not guessed.
 - **Fair screening.** Shortlists and matches use job-related criteria only. They are suggestions, and the decision is yours.
@@ -80,12 +80,12 @@ Email [help@rolepark.com](mailto:help@rolepark.com). You can also use the feedba
 
 1. У Claude відкрийте **Customize → Plugins**, знайдіть **RolePark** у каталозі й додайте.
 2. На вкладці **Connectors** плагіна підключіть **RolePark**. На планах Team і Enterprise конектор спершу додає Owner організації, а потім кожен підключається зі своїм акаунтом RolePark.
-3. Увійдіть у RolePark і натисніть **Дозволити**. Залиште позначку **Зміни**, якщо хочете, щоб Claude додавав кандидатів, переводив етапи, додавав нотатки й задачі. Без цього Claude лише переглядає дані.
+3. Увійдіть у RolePark і натисніть **Дозволити**. Залиште позначку **Зміни**, якщо хочете, щоб Claude додавав кандидатів, переводив етапи, призначав інтерв'ю, додавав нотатки й задачі. Без цього Claude лише переглядає дані.
 
 ### Що можна попросити
 
 - «Що в мене сьогодні по найму?» — брифінг: інтерв'ю, задачі, нові відгуки, кандидати, що застрягли.
-- «Переглянь нові відгуки на Senior Java Developer і зроби шортлист.» — оцінка за вимогами вакансії, причини й ризики, пропозиції переведень етапів.
+- «Переглянь нові відгуки на Senior Java Developer і зроби шортлист.» — оцінка за вимогами вакансії, причини й ризики, пропозиції переведень етапів, а після вашого «так» — призначення інтерв'ю.
 - «Підготуй мене до співбесіди о 14:00.» — бриф: профіль, попередні відгуки, питання, що перевірити.
 - «Кого маємо в базі на вакансію QA Engineer? Пошукай у резюме (selenium OR playwright) AND api.» — підбір за навичками й булевий пошук по резюме.
 - «Додай цього кандидата й постав на вакансію Product Designer: …» — поля з резюме, перевірка дублікатів, картка на підтвердження.
@@ -94,7 +94,7 @@ Email [help@rolepark.com](mailto:help@rolepark.com). You can also use the feedba
 ### Безпека й дані
 
 - Claude бачить і робить лише те, що можете ви в RolePark. Знеособлені кандидати лишаються знеособленими.
-- Жодних змін без вашого «так»: перед кожною дією Claude показує, що саме зміниться.
+- Жодних змін без вашого «так»: перед кожною дією Claude показує, що саме зміниться. Призначене інтерв'ю надсилає кандидату й інтерв'юерам звичайні запрошення; час завжди з часовим поясом, а якщо хтось зайнятий, нічого не створюється і Claude показує конфлікти.
 - Плагін не запускає власного коду й нічого не зберігає. Дані йдуть лише між Claude і RolePark (https://rolepark.com/api/mcp) з вашим входом. Те, що Claude читає з RolePark, обробляє Anthropic згідно з вашою угодою з Anthropic.
 - Кожна зміна через Claude записується в журнал аудиту компанії. Відключити агента можна будь-коли: **Профіль → AI-агенти** в RolePark або **Customize → Connectors** у Claude.
 - Політика конфіденційності: https://rolepark.com/privacy. Підтримка: [help@rolepark.com](mailto:help@rolepark.com).
