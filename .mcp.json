@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "rolepark": {
+      "type": "http",
+      "url": "https://rolepark.com/api/mcp"
+    }
+  }
+}
