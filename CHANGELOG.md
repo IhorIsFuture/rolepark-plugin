@@ -2,7 +2,9 @@
 
 All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json` (Claude) and in the root `plugin.json` (ChatGPT and Codex); raise both with every release.
 
-## 1.2.2 — 2026-10-03
+## [1.2.2] - 2026-10-03
+
+### Changed
 
 - Removed the `repository` field: the plugin source is not published on GitHub yet.
 
