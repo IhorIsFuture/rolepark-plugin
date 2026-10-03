@@ -1,7 +1,7 @@
 {
   "name": "rolepark",
   "displayName": "RolePark",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Recruiting workflows for the RolePark applicant tracking system: a daily briefing, application review with a shortlist and interview scheduling, interview prep, candidate search in your own database, adding a candidate from a CV, and pipeline updates for hiring managers. Claude works with your own RolePark access and asks before changing anything.",
   "author": {
     "name": "RolePark",
@@ -9,7 +9,6 @@
     "url": "https://rolepark.com"
   },
   "homepage": "https://rolepark.com",
-  "repository": "https://github.com/rolepark/rolepark-claude-plugin",
   "license": "MIT",
   "keywords": [
     "recruiting",
