@@ -2,6 +2,12 @@
 
 All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json` (Claude) and in the root `plugin.json` (ChatGPT and Codex); raise both with every release.
 
+## [1.2.4] - 2026-10-03
+
+### Changed
+
+- ChatGPT listing: category back to Productivity (Business is not a dashboard category); reviewer demo recording added.
+
 ## [1.2.3] - 2026-10-03
 
 ### Changed

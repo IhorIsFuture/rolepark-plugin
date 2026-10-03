@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "rolepark",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Recruiting workflows for the RolePark applicant tracking system: a daily briefing, application review with a shortlist and interview scheduling, interview prep, candidate search in your own database, adding a candidate from a CV, and pipeline updates for hiring managers. The assistant works with your own RolePark access and asks before changing anything.",
   "author": {
     "name": "RolePark",
@@ -27,7 +27,7 @@
         "shortDescription": "Your hiring pipeline in chat",
         "longDescription": "RolePark is an applicant tracking and HR system for recruiting teams and agencies. The RolePark plugin lets recruiters, hiring managers and interviewers work with their hiring data from ChatGPT and Codex: see who is at which stage of a vacancy, open a candidate profile with notes and history, find candidates in the company database who match a vacancy's skills, and check upcoming interviews and tasks. Ready-made workflows cover a daily briefing, reviewing new applications into a shortlist, interview prep, candidate search, adding a candidate from a pasted CV, and a pipeline update for the hiring manager.\n\nWith the separate \"Make changes\" permission, the assistant can also add a candidate with the source of the data, put a candidate into a vacancy, move an application to another stage, schedule an interview, add a note and create a task. It shows what will change and asks before every change. Scheduling an interview sends the candidate and the interviewers the usual RolePark invitations; if anyone is busy at that time, nothing is created and the assistant shows the conflicts. It cannot delete data or change settings.\n\nThe assistant signs in with the user's own RolePark account through OAuth and gets exactly that person's access, never more: the same role limits, hidden fields and company boundaries apply. A company administrator decides whether assistants may connect at all (off by default, view only, or view and changes). Every change made through an assistant is recorded in the company audit log with the application's name, and the user can disconnect it at any time in Profile → AI agents. A RolePark account is required.",
         "developerName": "RolePark",
-        "category": "Business",
+        "category": "Productivity",
         "capabilities": [
           "See who is at each stage of a vacancy's hiring pipeline",
           "Open a candidate profile with the vacancies they are in, notes and activity",
@@ -55,6 +55,7 @@
         "logoDark": "./assets/logo-dark.png"
       },
       "review": {
+        "demo_recording_url": "https://youtu.be/DYbEWLcTTk4",
         "test_cases": {
           "positive": [
             {
