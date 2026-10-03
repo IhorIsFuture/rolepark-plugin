@@ -9,6 +9,7 @@
     "url": "https://rolepark.com"
   },
   "homepage": "https://rolepark.com",
+  "repository": "https://github.com/IhorIsFuture/rolepark-plugin",
   "license": "MIT",
   "keywords": [
     "recruiting",

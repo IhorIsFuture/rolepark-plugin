@@ -6,7 +6,7 @@ All notable changes to the RolePark plugin for Claude are listed here. The versi
 
 ### Changed
 
-- Removed the `repository` field: the plugin source is not published on GitHub yet.
+- The plugin source is now public at https://github.com/IhorIsFuture/rolepark-plugin; `repository` in both manifests points there.
 
 ## [1.2.1] - 2026-10-03
 

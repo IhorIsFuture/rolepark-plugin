@@ -9,6 +9,7 @@
     "url": "https://rolepark.com"
   },
   "homepage": "https://rolepark.com/ai-assistants",
+  "repository": "https://github.com/IhorIsFuture/rolepark-plugin",
   "license": "MIT",
   "keywords": [
     "recruiting",
