@@ -2,6 +2,18 @@
 
 All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json` (Claude) and in the root `plugin.json` (ChatGPT and Codex); raise both with every release.
 
+## [1.3.0] - 2026-10-08
+
+### Added
+
+- Vacancies through the RolePark connector's new `create_vacancy`, `update_vacancy` and `set_vacancy_status` tools (12 read and 9 write tools in total). A new vacancy is always an unpublished draft; publishing on the company's career page, pausing and closing follow the same rules and plan limit as in RolePark (3 published vacancies on the Free plan).
+- `create-vacancy` skill: turns a job description or a client's message into a vacancy. It drafts the fields, asks only for what is missing, checks for an existing vacancy, shows a confirmation card and creates a draft after a yes; it publishes only after a separate yes. It also covers editing, pausing and closing, with what closing does to open applications and scheduled interviews.
+- README: a list of all RolePark tools, in English and Ukrainian.
+
+### Changed
+
+- ChatGPT listing: description, capabilities, release notes and the Ukrainian translation mention vacancies; a review test case creates a vacancy draft without publishing it.
+
 ## [1.2.4] - 2026-10-03
 
 ### Changed
