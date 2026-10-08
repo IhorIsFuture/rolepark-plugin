@@ -7,7 +7,7 @@ All notable changes to the RolePark plugin for Claude are listed here. The versi
 ### Added
 
 - Vacancies through the RolePark connector's new `create_vacancy`, `update_vacancy` and `set_vacancy_status` tools (12 read and 9 write tools in total). A new vacancy is always an unpublished draft; publishing on the company's career page, pausing and closing follow the same rules and plan limit as in RolePark (3 published vacancies on the Free plan).
-- `create-vacancy` skill: turns a job description or a client's message into a vacancy. It drafts the fields, asks only for what is missing, checks for an existing vacancy, shows a confirmation card and creates a draft after a yes; it publishes only after a separate yes. It also covers editing, pausing and closing, with what closing does to open applications and scheduled interviews.
+- `create-vacancy` skill: turns a job description or a client's message into a vacancy. It drafts the fields, asks only for what is missing, checks for an existing vacancy, shows a confirmation card and creates a draft after a yes; it publishes only after a separate yes. It also covers editing, pausing and closing, with what closing does to open applications and scheduled interviews. It can add yes/no screening questions for applicants (up to 10, with deciding ones that reject a non-matching answer automatically).
 - README: a list of all RolePark tools, in English and Ukrainian.
 
 ### Changed

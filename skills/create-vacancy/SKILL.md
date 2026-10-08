@@ -35,8 +35,10 @@ Turn what the user pasted (a job description, a client's email, a hiring manager
    | `headcount`, `priority` | Only if stated. |
    | `recruiterId` | Default: the user (see `whoami`). Another recruiter only if the user names one and gives their RolePark id. |
    | `stageTemplate` | Only if the user names one of the company's stage templates. Otherwise the standard stages. |
+   | `screeningQuestions` | Questions for applicants (see step 2). Only if the source or the user has them. |
 
 2. **Ask only for what matters and is missing:** usually the title, the location or work mode, and whether to include a salary range. Ask in one short message, not field by field. If the user says "as is", go on with what you have.
+   **Screening questions.** Candidates answer them yes or no when they apply on the career page. Up to 10, each up to 300 characters, phrased so that yes or no is a clear answer ("Do you have a work permit for Ukraine?"). For each one, set the answer that passes (`expected`, default yes) and whether it is a deciding one (`knockout`): with `knockout`, RolePark rejects an application with the other answer, or with no answer, automatically. Mark a question as deciding only if the user or the source says it is a hard requirement, and offer questions only from requirements that are in the source. Candidates see only the question text, never the expected answer. Questions must be job-related, like the rest of the vacancy.
 3. **Check for an existing vacancy.** Call `list_vacancies` with `query` set to the title. If a vacancy with the same or a very close title is open, show it with its status and link and ask whether to create a new one or change that one.
 4. **Show the confirmation card** (template below): every field that will be saved, what was left out and why, and that it will be created as a draft. Ask "Create the draft? (yes / change …)".
 5. **On an explicit yes, create.** Call `create_vacancy`. It always creates an unpublished draft that candidates can't see.
@@ -49,7 +51,7 @@ Turn what the user pasted (a job description, a client's email, a hiring manager
 
 ## Changing, pausing or closing a vacancy
 
-- **Change fields.** Show what will change (old → new), then call `update_vacancy` with only the changed fields. On a published vacancy, the career page shows the change at once; say so.
+- **Change fields.** Show what will change (old → new), then call `update_vacancy` with only the changed fields. `screeningQuestions` replaces the whole list: read the current questions with `get_vacancy`, send the full new list, and an empty list removes all of them. On a published vacancy, the career page shows the change at once; say so.
 - **Pause.** `set_vacancy_status` with `on_hold` hides a published vacancy from the career page; applications stay.
 - **Close.** Before closing, warn that every open application in it is closed as "position closed" and pending applications from the career page are declined, and that reopening doesn't bring them back. Ask whether to email the candidates (`notifyCandidates`, off by default). If the reply says interviews are scheduled, ask whether to cancel them (and tell the candidates) or keep them, then repeat with `cancelInterviews: true` or `false`.
 
@@ -70,6 +72,7 @@ Confirmation card:
 | Must have | Go; PostgreSQL; 4+ years in backend; REST and gRPC |
 | Nice to have | Kafka; Kubernetes |
 | Recruiter | you |
+| Screening questions | 1. Do you have a work permit for Ukraine? (yes passes, deciding) · 2. Are you ready for a test task? (yes passes) |
 
 Description: 3 short paragraphs (role, responsibilities, what we offer), cleaned of the email greeting and signature.
 Left out: "candidates under 35" (not a job-related requirement).
@@ -88,7 +91,7 @@ A good card shows only fields that came from the source or from the user, says w
 
 ## Gotchas
 
-- Field limits: title 200 characters, description 20,000, location and department 150, up to 100 skills of 100 characters each. Salary minimum can't be above the maximum.
+- Field limits: title 200 characters, description 20,000, location and department 150, up to 100 skills of 100 characters each, up to 10 screening questions of 300 characters each. Salary minimum can't be above the maximum.
 - `update_vacancy` doesn't change the status; `set_vacancy_status` does. Pausing works only for a published vacancy.
 - Stage templates are an ATS feature; on the Free plan there are none.
 - No RolePark tools available means RolePark isn't connected. Tell the user to connect RolePark from the plugin (in Claude: the plugin's Connectors tab; in ChatGPT or Codex: the RolePark plugin in Plugins), sign in to RolePark and allow access.
