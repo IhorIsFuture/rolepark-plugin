@@ -58,6 +58,7 @@ The skills use the tools of the RolePark connector. You can also ask for any of 
 | `list_candidates` | read | Candidates in your database, with filters and a boolean CV search |
 | `get_candidate` | read | A candidate's profile and the vacancies they are in |
 | `get_candidate_activity` | read | A candidate's timeline: stage moves, emails, interviews, notes |
+| `get_candidate_cv` | read | The text extracted from a candidate's CV (not while the candidate is anonymized for you); each read is logged |
 | `get_candidate_notes` | read | Team notes and your private notes on a candidate |
 | `list_vacancies` | read | Vacancies you can see, with status and application counts |
 | `get_vacancy` | read | A vacancy's description, skills, salary range and stages |
@@ -106,7 +107,7 @@ The skills use the tools of the RolePark connector. You can also ask for any of 
 
 This plugin contains instructions for Claude and the address of the RolePark connector. It runs no code of its own, stores nothing, and sends nothing anywhere else.
 
-- When you use it, Claude calls RolePark at https://rolepark.com/api/mcp with your RolePark sign-in (OAuth). Claude reads the candidates, notes, vacancies, pipelines, interviews and tasks that you can see. It writes only the changes you confirm. If you give a link to a new company logo or cover image, RolePark's server downloads that image once (public https addresses only, PNG, JPEG or WebP up to 2 MB) and stores its own copy.
+- When you use it, Claude calls RolePark at https://rolepark.com/api/mcp with your RolePark sign-in (OAuth). Claude reads the candidates (including the text of their CVs, when you may open the CV), notes, vacancies, pipelines, interviews and tasks that you can see; every CV read is recorded in your company's sensitive data access log. It writes only the changes you confirm. If you give a link to a new company logo or cover image, RolePark's server downloads that image once (public https addresses only, PNG, JPEG or WebP up to 2 MB) and stores its own copy.
 - What Claude reads from RolePark becomes part of your conversation and is processed by Anthropic under your agreement with Anthropic.
 - RolePark records every change made through Claude in your company's audit log, with the app's name.
 - You can disconnect at any time: in RolePark under **Profile → AI agents → Disconnect**, or in Claude under **Customize → Connectors**. A company admin can turn AI agents off for everyone.
@@ -163,7 +164,7 @@ Email [help@rolepark.com](mailto:help@rolepark.com). You can also use the feedba
 
 ### Інструменти RolePark
 
-Скіли користуються інструментами конектора RolePark; їх можна просити й напряму. Читання: `whoami`, `search`, `list_candidates`, `get_candidate`, `get_candidate_activity`, `get_candidate_notes`, `list_vacancies`, `get_vacancy`, `get_vacancy_pipeline`, `match_candidates_for_vacancy`, `list_my_interviews`, `list_my_tasks`. Зміни (лише з дозволом **Зміни**): `create_candidate`, `add_candidate_to_vacancy`, `move_application_stage`, `add_note`, `create_task`, `schedule_interview`, `create_vacancy` (завжди чернетка), `update_vacancy`, `set_vacancy_status` (публікація, пауза, закриття), `review_incoming_application` (прийняти чи відхилити відгук), `send_candidate_email` (лист іде одразу), `update_candidate`, `add_tag`, `remove_tag`, `submit_scorecard`, `reschedule_interview`, `cancel_interview`, `publish_vacancy_to_boards` (Djinni), `update_company_profile` (лише адмін компанії). Ще читання: `list_team_members`, `list_stage_templates`, `list_applications`, `get_application`, `list_incoming_applications`, `list_email_templates`, `get_interview_feedback`, `get_vacancy_stats`, `get_company_profile`.
+Скіли користуються інструментами конектора RolePark; їх можна просити й напряму. Читання: `whoami`, `search`, `list_candidates`, `get_candidate`, `get_candidate_activity`, `get_candidate_cv` (текст CV; кожне прочитання — у журналі), `get_candidate_notes`, `list_vacancies`, `get_vacancy`, `get_vacancy_pipeline`, `match_candidates_for_vacancy`, `list_my_interviews`, `list_my_tasks`. Зміни (лише з дозволом **Зміни**): `create_candidate`, `add_candidate_to_vacancy`, `move_application_stage`, `add_note`, `create_task`, `schedule_interview`, `create_vacancy` (завжди чернетка), `update_vacancy`, `set_vacancy_status` (публікація, пауза, закриття), `review_incoming_application` (прийняти чи відхилити відгук), `send_candidate_email` (лист іде одразу), `update_candidate`, `add_tag`, `remove_tag`, `submit_scorecard`, `reschedule_interview`, `cancel_interview`, `publish_vacancy_to_boards` (Djinni), `update_company_profile` (лише адмін компанії). Ще читання: `list_team_members`, `list_stage_templates`, `list_applications`, `get_application`, `list_incoming_applications`, `list_email_templates`, `get_interview_feedback`, `get_vacancy_stats`, `get_company_profile`.
 
 ### Безпека й дані
 

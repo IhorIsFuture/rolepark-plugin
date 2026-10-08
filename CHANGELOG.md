@@ -6,7 +6,7 @@ All notable changes to the RolePark plugin for Claude are listed here. The versi
 
 ### Added
 
-- The full hiring flow through the RolePark connector (21 read and 19 write tools): the company's team and stage templates; applications and incoming applications with the candidates' screening answers and knockout results, and accepting or declining incoming applications; email templates and emails to candidates; candidate profile updates and tags; interview feedback, scorecards, rescheduling and cancelling interviews; vacancy statistics; publishing a vacancy on Djinni; the company profile, logo and cover image.
+- The full hiring flow through the RolePark connector (22 read and 19 write tools): the text of a candidate's CV, logged on every read and not shown while the candidate is anonymized; the company's team and stage templates; applications and incoming applications with the candidates' screening answers and knockout results, and accepting or declining incoming applications; email templates and emails to candidates; candidate profile updates and tags; interview feedback, scorecards, rescheduling and cancelling interviews; vacancy statistics; publishing a vacancy on Djinni; the company profile, logo and cover image.
 - `review-applications` skill: incoming applications with screening answers, a proposal for each, accept or decline after a yes.
 - `email-candidate` skill: a template or drafted email with the exact preview; sent only after a yes, and it can't be recalled.
 - `interview-feedback` skill: a fair scorecard from the user's notes, the team's feedback, and rescheduling or cancelling an interview with confirmation.
@@ -14,6 +14,7 @@ All notable changes to the RolePark plugin for Claude are listed here. The versi
 
 ### Changed
 
+- `shortlist`, `interview-prep` and `review-applications` read the CV text to check the must-haves and prepare questions.
 - `create-vacancy` finds the recruiter and the hiring manager by name, lists the company's stage templates, clears fields with `null`, offers Djinni after publishing, and tells the user when candidate emails on closing are paused.
 - `pipeline-update` uses RolePark's analytics numbers when the user can see them.
 - README: the full list of tools and the new workflows; ChatGPT listing, capabilities, release notes, Ukrainian translation and a read-only review test case for vacancy analytics.

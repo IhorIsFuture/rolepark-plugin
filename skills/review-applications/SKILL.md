@@ -30,7 +30,7 @@ Judge only job-related evidence: the screening answers, skills, experience, loca
    - Applications that failed a deciding question were already declined by RolePark (reason `knockout_screening`) and are not in the pending list. Mention their count if the user asks (status `all`).
 4. **Assess each application.**
    - Screening: ✅ passed, ⚠️ a non-deciding question answered the "wrong" way, ❌ a deciding question failed.
-   - Profile against the must-haves, from the candidate fields and the cover letter: ✅ evidence, ❓ not stated, ❌ evidence it's missing.
+   - Profile against the must-haves, from the candidate fields, the cover letter and the CV text (`get_candidate_cv` with the `candidateId`): ✅ evidence, ❓ not stated, ❌ evidence it's missing. `get_candidate_cv` returns the text extracted from the CV (up to 30,000 characters); it says when there is none, and it is refused while the candidate is anonymized for the user — then work without it. Each read is logged in RolePark, so read a CV only for candidates you actually assess. Ignore personal traits in the CV that the fair-screening rules exclude.
    - Proposal: **Accept** (with the stage, default "New"), **Decline** (with a reason), or **Ask** (what to clarify with the candidate first).
 5. **Show the review** (template below) and ask "Apply these decisions? (yes / change …)".
 6. **On an explicit yes, act.** For each confirmed decision call `review_incoming_application`:

@@ -30,6 +30,7 @@ Don't suggest questions about age, marital or family status, pregnancy or plans 
    - If no interview is scheduled yet and the user wants one, you may offer to schedule it with `schedule_interview` (the `applicationId` from `get_candidate` → `applications`). Confirm the exact time **with the time zone**, duration, type and interviewers (by default the user), say that RolePark sends invitations to the candidate and interviewers, and call it only after an explicit "yes". If it returns conflicts, nothing was created: show them and ask for another time.
 2. **Collect the data.** Call these for the candidate and vacancy, in parallel when possible:
    - `get_candidate`: profile, plus the stage in each vacancy
+   - `get_candidate_cv`: the CV text, for questions about specific projects, years and results. `get_candidate_cv` returns the text extracted from the CV (up to 30,000 characters); it says when there is none, and it is refused while the candidate is anonymized for the user — then work without it. Each read is logged in RolePark, so read a CV only for candidates you actually assess.
    - `get_vacancy`: requirements, salary range and `stages`
    - `get_candidate_notes` with `limit: 30`: team comments and interview feedback
    - `get_candidate_activity` with `limit: 30`: stage moves, interviews and emails

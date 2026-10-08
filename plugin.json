@@ -43,7 +43,8 @@
           "Email a candidate with a company template or your own text; replies go to you",
           "Submit interview scorecards, read the team's feedback, reschedule or cancel interviews",
           "Vacancy analytics: funnel, conversion, days in stage and sources",
-          "Find colleagues and stage templates; update a candidate's profile and tags; update the company profile and logo"
+          "Find colleagues and stage templates; update a candidate's profile and tags; update the company profile and logo",
+          "Read a candidate's CV text when you may open the CV in RolePark"
         ],
         "websiteURL": "https://rolepark.com",
         "supportURL": "https://rolepark.com/ai-assistants#support",
@@ -129,7 +130,7 @@
         "commerce_description": "RolePark does not sell products or process payments through this plugin."
       },
       "publication": {
-        "release_notes": "Version 1.4.0: the full hiring flow. New workflows review incoming applications with the candidates' screening answers, email a candidate, record an interview scorecard and build a vacancy analytics report. The RolePark MCP server now has 21 read tools and 19 write tools; new are the team and stage template lists, applications with screening answers, accepting or declining incoming applications, email templates and candidate emails, candidate profile and tags, interview feedback, scorecards, rescheduling and cancelling interviews, vacancy statistics, publishing on Djinni and the company profile. Every change still needs the user's confirmation and is recorded in the company audit log.",
+        "release_notes": "Version 1.4.0: the full hiring flow. New workflows review incoming applications with the candidates' screening answers, email a candidate, record an interview scorecard and build a vacancy analytics report. The RolePark MCP server now has 22 read tools and 19 write tools; new are the candidate's CV text, the team and stage template lists, applications with screening answers, accepting or declining incoming applications, email templates and candidate emails, candidate profile and tags, interview feedback, scorecards, rescheduling and cancelling interviews, vacancy statistics, publishing on Djinni and the company profile. Every change still needs the user's confirmation and is recorded in the company audit log.",
         "translations": {
           "uk-UA": {
             "subtitle": "Ваша воронка найму в чаті",
