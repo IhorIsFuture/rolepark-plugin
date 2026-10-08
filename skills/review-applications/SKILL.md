@@ -35,7 +35,7 @@ Judge only job-related evidence: the screening answers, skills, experience, loca
 5. **Show the review** (template below) and ask "Apply these decisions? (yes / change …)".
 6. **On an explicit yes, act.** For each confirmed decision call `review_incoming_application`:
    - accept: `decision: "accept"`, `stage` if not "new";
-   - decline: `decision: "decline"`, `reason` (for example `not_qualified`, `salary_mismatch`, `location`, `other`) and a short internal `note` with the job-related reason.
+   - decline: `decision: "decline"`, `reason` — one of `not_qualified`, `insufficient_experience`, `overqualified`, `salary_mismatch`, `location_mismatch`, `culture_fit`, `failed_technical`, `failed_interview`, `no_show`, `withdrew`, `position_closed`, `better_candidate`, `other` (default `other`) — and a short internal `note` with the job-related reason.
 
    Neither sends anything to the candidate. If the user also wants to write to candidates, offer the `email-candidate` workflow separately.
 7. **Report** what was done with links: accepted (application and stage), declined (reason), and anything refused with RolePark's reason.

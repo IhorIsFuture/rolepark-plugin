@@ -21,7 +21,7 @@ Prepare an email to one candidate (or a few), show exactly what will be sent, an
 
 1. **Find the candidate.** Use `search` or `list_candidates`; if several match, ask. Check with `get_candidate` that there is an email address (without one, RolePark refuses) and note the vacancy the email is about.
 2. **Pick the text.**
-   - Call `list_email_templates` and suggest a fitting template (invitation, follow-up, rejection…). Templates may use `{{firstName}}`, `{{lastName}}`, `{{fullName}}`, `{{vacancyTitle}}`, `{{companyName}}` and `{{recruiterName}}`.
+   - Call `list_email_templates` and suggest a fitting template (invitation, follow-up, rejection…). Templates may use `{{firstName}}`, `{{lastName}}`, `{{fullName}}`, `{{position}}` (the candidate's current position), `{{vacancyTitle}}`, `{{companyName}}` and `{{recruiterName}}`.
    - Or draft a subject and text with the user. Plain text, short paragraphs, no attachments (RolePark sends text only).
 3. **Show the preview** with the variables filled in as the candidate will see them: To, Subject, text, and "Replies go to your email". Say that it is sent at once and cannot be recalled. Ask "Send? (yes / change …)".
 4. **On an explicit yes, send.** Call `send_candidate_email` with `candidateId` and either `templateId` (plus `vacancyId` if the template uses `{{vacancyTitle}}`) or `subject` and `body`.

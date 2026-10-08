@@ -26,8 +26,8 @@ Help the user record a fair, evidence-based scorecard for an interview they took
    - recommendation: `strong_hire`, `hire`, `no_hire` or `strong_no_hire`;
    - strengths and weaknesses — specific, with evidence from the interview;
    - notes — open questions, things to verify next.
-4. **Show it** (template below) and ask "Submit? (yes / save as draft / change …)".
-5. **On an explicit yes**, call `submit_scorecard` (`draft: true` if the user wants a draft). An interview that hasn't happened yet or was cancelled can't take a submitted scorecard.
+4. **Show it** (template below) and ask "Submit? (yes / change …)".
+5. **On an explicit yes**, call `submit_scorecard`. An interview that hasn't happened yet or was cancelled can't take a submitted scorecard. Don't save drafts from here: a draft can't be finished through the connector, and RolePark then refuses a second scorecard for the same interview (`SCORECARD_DRAFT_EXISTS`) — if that happens, tell the user to finish the draft in RolePark.
 6. **Report** what was saved, with the candidate link.
 
 ## Steps — team feedback
@@ -36,8 +36,8 @@ Call `get_interview_feedback` and summarise per interview: who evaluated, rating
 
 ## Steps — reschedule or cancel
 
-- **Reschedule:** agree the new start with a time zone offset (for example `2026-10-14T15:00:00+03:00`) and, optionally, the duration. Show old → new time and who will be notified, then call `reschedule_interview` after a yes. If an interviewer is busy, nothing changes and RolePark lists the conflicts — propose another time instead of retrying.
-- **Cancel:** show the interview and that the candidate and interviewers will be told, then call `cancel_interview` after a yes. The application's stage doesn't change.
+- **Reschedule:** agree the new start with a time zone offset (for example `2026-10-14T15:00:00+03:00`) and, optionally, the duration (30, 45, 60 or 90 minutes). Only a scheduled interview that hasn't started and has no submitted scorecards can be moved, and not more than a year ahead; for others, offer to schedule a new interview. Show old → new time and who will be notified, then call `reschedule_interview` after a yes. If an interviewer is busy, nothing changes and RolePark lists the conflicts — propose another time instead of retrying.
+- **Cancel:** show the interview and that the candidate and interviewers will be told, then call `cancel_interview` after a yes. The application's stage doesn't change. An interview whose start time has passed can't be cancelled from here: its outcome is recorded in RolePark.
 
 ## Output
 
@@ -56,10 +56,12 @@ Strengths: designed an API test suite from scratch in the exercise; clear reason
 Weaknesses: limited load-testing experience (only JMeter basics).
 Notes: check Playwright depth in the final round.
 
-Submit? (yes / save as draft / change …)
+Submit? (yes / change …)
 ```
 
 ## Gotchas
+
+- `MAIL_DAILY_CAP` in a reply means the company's daily email limit is reached and the notices weren't sent. Tell the user when it resets and don't retry.
 
 - Ratings are whole numbers 1–5; at least one rating or the recommendation is needed for a submitted scorecard.
 - Interviews booked by the candidate in Calendly can't be moved from RolePark.

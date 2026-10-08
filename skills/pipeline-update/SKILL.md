@@ -28,7 +28,7 @@ Show where a vacancy stands: the funnel numbers, where candidates are stuck, and
    - `headcount`, recruiter and hiring manager
    - `stages`, the stage order and names
 3. **Load the funnel.** Call `get_vacancy_pipeline` to get the count in each stage.
-   If `get_vacancy_stats` is available and the user can see analytics, use its `reached` and conversion numbers (they count candidates who were rejected later too) and `avgDaysInStage` instead of the approximate ones below, and say they come from RolePark analytics.
+   If `get_vacancy_stats` is available and the user can see analytics, use its `reached` and conversion numbers (they count candidates who were rejected later too) and `avgDaysInStage` instead of the approximate ones below, and say they come from RolePark analytics. The analytics count the standard stages only: applications in the vacancy's own (custom) stages are summed in `otherStages`, so for those stages use the pipeline counts.
 4. **Compute the numbers.**
    - **Now:** the count in each stage, in pipeline order. Show hired against headcount, and rejected separately.
    - **Reached:** the people now in this stage or in any later stage, including hired. Rejected people are left out, because the pipeline doesn't show where they left.

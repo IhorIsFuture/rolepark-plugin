@@ -62,5 +62,5 @@ Sources: LinkedIn 20 → 1 hire · career page 14 → 0 · referral 5 → 0 · D
 ## Gotchas
 
 - `reached` counts applications that ever reached a stage, so it can be larger than `now`.
-- Custom stages are counted in `otherStages`, not in the standard rows.
+- Custom stages are counted in `otherStages`, not in the standard rows: say so, and take their counts from `get_vacancy_pipeline` if the user needs them.
 - No RolePark tools available means RolePark isn't connected. Tell the user to connect RolePark from the plugin (in Claude: the plugin's Connectors tab; in ChatGPT or Codex: the RolePark plugin in Plugins).

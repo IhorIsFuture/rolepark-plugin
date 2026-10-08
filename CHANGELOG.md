@@ -16,7 +16,9 @@ All notable changes to the RolePark plugin for Claude are listed here. The versi
 
 - `shortlist`, `interview-prep` and `review-applications` read the CV text to check the must-haves and prepare questions.
 - `create-vacancy` finds the recruiter and the hiring manager by name, lists the company's stage templates, clears fields with `null`, offers Djinni after publishing, and tells the user when candidate emails on closing are paused.
-- `pipeline-update` uses RolePark's analytics numbers when the user can see them.
+- `pipeline-update` uses RolePark's analytics numbers when the user can see them. Custom stages are taken from the pipeline, because the analytics count only the standard ones.
+- `review-applications` lists the valid decline reasons; `interview-feedback` submits scorecards without drafts, knows the interview durations and the rules for moving or cancelling, and reports the daily email limit; `email-candidate` knows the `{{position}}` variable.
+- README and the ChatGPT listing: every kind of change is listed among those Claude confirms first, and the listing no longer says the assistant can't change settings (it can change the company profile).
 - README: the full list of tools and the new workflows; ChatGPT listing, capabilities, release notes, Ukrainian translation and a read-only review test case for vacancy analytics.
 
 ## [1.3.0] - 2026-10-08
