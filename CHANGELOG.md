@@ -2,6 +2,22 @@
 
 All notable changes to the RolePark plugin for Claude are listed here. The version matches `version` in `.claude-plugin/plugin.json` (Claude) and in the root `plugin.json` (ChatGPT and Codex); raise both with every release.
 
+## [1.4.0] - 2026-10-08
+
+### Added
+
+- The full hiring flow through the RolePark connector (21 read and 19 write tools): the company's team and stage templates; applications and incoming applications with the candidates' screening answers and knockout results, and accepting or declining incoming applications; email templates and emails to candidates; candidate profile updates and tags; interview feedback, scorecards, rescheduling and cancelling interviews; vacancy statistics; publishing a vacancy on Djinni; the company profile, logo and cover image.
+- `review-applications` skill: incoming applications with screening answers, a proposal for each, accept or decline after a yes.
+- `email-candidate` skill: a template or drafted email with the exact preview; sent only after a yes, and it can't be recalled.
+- `interview-feedback` skill: a fair scorecard from the user's notes, the team's feedback, and rescheduling or cancelling an interview with confirmation.
+- `vacancy-report` skill: funnel, conversion, days in each stage and source effectiveness of a vacancy.
+
+### Changed
+
+- `create-vacancy` finds the recruiter and the hiring manager by name, lists the company's stage templates, clears fields with `null`, offers Djinni after publishing, and tells the user when candidate emails on closing are paused.
+- `pipeline-update` uses RolePark's analytics numbers when the user can see them.
+- README: the full list of tools and the new workflows; ChatGPT listing, capabilities, release notes, Ukrainian translation and a read-only review test case for vacancy analytics.
+
 ## [1.3.0] - 2026-10-08
 
 ### Added
