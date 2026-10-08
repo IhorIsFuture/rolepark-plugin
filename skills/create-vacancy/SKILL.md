@@ -33,8 +33,9 @@ Turn what the user pasted (a job description, a client's email, a hiring manager
    | `salaryMin`, `salaryMax`, `salaryCurrency`, `salaryPeriod` | Only if stated, as whole numbers. `salaryPublic: false` if the client asks to keep it hidden. |
    | `department` | The department, team or client the role is for. |
    | `headcount`, `priority` | Only if stated. |
-   | `recruiterId` | Default: the user (see `whoami`). Another recruiter only if the user names one and gives their RolePark id. |
-   | `stageTemplate` | Only if the user names one of the company's stage templates. Otherwise the standard stages. |
+   | `recruiterId` | Default: the user. Another recruiter only if the user names one: find their id with `list_team_members` (`query` with the name). |
+   | `hiringManagerId` | Only if the user or the source names the hiring manager: find them with `list_team_members` (`role: "hiring_manager"`). If several match or none, ask. |
+   | `stageTemplate` | Only if the user wants one of the company's stage templates: `list_stage_templates` shows them with their stages. Otherwise the standard stages. |
    | `screeningQuestions` | Questions for applicants (see step 2). Only if the source or the user has them. |
 
 2. **Ask only for what matters and is missing:** usually the title, the location or work mode, and whether to include a salary range. Ask in one short message, not field by field. If the user says "as is", go on with what you have.
@@ -45,15 +46,16 @@ Turn what the user pasted (a job description, a client's email, a hiring manager
    - If the response has `stageTemplateNotApplied`, the vacancy was created with the standard stages. Tell the user why.
    - A refusal names the invalid fields. Fix them and show the card again; don't drop data silently.
 6. **Offer to publish.** Ask whether to publish it on the company's career page now. Only on a separate yes, call `set_vacancy_status` with `status: "active"`.
+   - If the company has connected Djinni and the user wants it there too, offer it after publishing; on a separate yes call `publish_vacancy_to_boards` (`board: "djinni"`). A refusal names the Djinni fields to fill in; the post itself goes through Djinni moderation.
    - `publish_requirements` with `Missing: description` means the description is empty. Offer to add one with `update_vacancy`.
    - `PLAN_LIMIT_VACANCIES` means the company's plan limit of published vacancies is reached (3 on the Free plan). Explain it and offer to pause or close another vacancy first, or leave this one as a draft. Don't pause or close anything without the user's yes for that vacancy.
 7. **Report** what was done, with the vacancy link and, if published, the career page link (`publicUrl`). RolePark records these changes in the audit log as made through the assistant's app.
 
 ## Changing, pausing or closing a vacancy
 
-- **Change fields.** Show what will change (old → new), then call `update_vacancy` with only the changed fields. `screeningQuestions` replaces the whole list: read the current questions with `get_vacancy`, send the full new list, and an empty list removes all of them. On a published vacancy, the career page shows the change at once; say so.
+- **Change fields.** Show what will change (old → new), then call `update_vacancy` with only the changed fields. To clear an optional field (salary range, hiring manager, location…) send it as `null`. `screeningQuestions` replaces the whole list: read the current questions with `get_vacancy`, send the full new list, and an empty list removes all of them. On a published vacancy, the career page shows the change at once; say so.
 - **Pause.** `set_vacancy_status` with `on_hold` hides a published vacancy from the career page; applications stay.
-- **Close.** Before closing, warn that every open application in it is closed as "position closed" and pending applications from the career page are declined, and that reopening doesn't bring them back. Ask whether to email the candidates (`notifyCandidates`, off by default). If the reply says interviews are scheduled, ask whether to cancel them (and tell the candidates) or keep them, then repeat with `cancelInterviews: true` or `false`.
+- **Close.** Before closing, warn that every open application in it is closed as "position closed" and pending applications from the career page are declined, and that reopening doesn't bring them back. Ask whether to email the candidates (`notifyCandidates`, off by default). While RolePark's automatic emails to candidates are paused, no email goes out even with `notifyCandidates`; the reply says so — tell the user, and offer the `email-candidate` workflow if they want to write themselves. If the reply says interviews are scheduled, ask whether to cancel them (and tell the candidates) or keep them, then repeat with `cancelInterviews: true` or `false`.
 
 ## Output
 
